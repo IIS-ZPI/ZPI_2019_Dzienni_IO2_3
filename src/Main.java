@@ -1,4 +1,4 @@
-public class Main implements IArithmeticsAdd{
+public class Main {
 
     public static void main(String[] args) {
 
@@ -6,10 +6,6 @@ public class Main implements IArithmeticsAdd{
         System.out.println("nciosek");
     }
 
-    @Override
-    public double Addition(double A, double B) {
-        return A+B;
-    }
 
 
 }
