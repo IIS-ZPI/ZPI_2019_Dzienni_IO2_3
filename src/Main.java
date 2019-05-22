@@ -20,7 +20,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
     }
 
     @Override
-    double Multiplication(double A, double B) {
+    public double Multiplication(double A, double B) {
         return A * B;
     }
   
