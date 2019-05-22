@@ -1,4 +1,4 @@
-public class Main implements IArithmeticsMult{
+public class Main implements IArithmeticsDiff, IArithmeticsMult{
 
     public static void main(String[] args) {
 
@@ -7,6 +7,11 @@ public class Main implements IArithmeticsMult{
         System.out.println("piotrek281097");
         System.out.println("nciosek");
         System.out.println("Bigoz005");
+    }
+
+    @Override
+    public double Difference(double A, double B) {
+        return A - B;
     }
 
     @Override
