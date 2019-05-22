@@ -1,4 +1,4 @@
-public class Main implements IArithmeticsDiff, IArithmeticsMult{
+public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd{
 
     public static void main(String[] args) {
 
@@ -9,6 +9,11 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult{
         System.out.println("Bigoz005");
     }
 
+    @Override
+    public double Addition(double A, double B) {
+        return A + B;
+    }
+  
     @Override
     public double Difference(double A, double B) {
         return A - B;
