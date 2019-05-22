@@ -1,4 +1,4 @@
-public class Main implements IArithmeticsDiff, IArithmeticsMult
+public class Main implements IArithmeticsDiff, IArithmeticsMult{
 
     public static void main(String[] args) {
 
