@@ -1,4 +1,4 @@
-public class Main {
+public class Main implements IArithmeticsMult{
 
     public static void main(String[] args) {
 
@@ -9,4 +9,8 @@ public class Main {
         System.out.println("Bigoz005");
     }
 
+    @Override
+    double Multiplication(double A, double B) {
+        return A * B;
+    }
 }
