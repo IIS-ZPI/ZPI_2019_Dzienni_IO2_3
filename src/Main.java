@@ -16,20 +16,20 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
         //komentarz pierwszy
         //komentarz 1 - Mikołaj
     }
-  
+    //komentarz zad5 piotr11
     @Override
     public double Difference(double A, double B) {
         return A - B;
         //komentarz 2 - Mikołaj
     }
-
+    //komentarz zad5 piotr22
     @Override
     public double Multiplication(double A, double B) {
         return A * B;
         //komentarz drugi
         //komentarz 3 - Mikolaj
     }
-  
+    //komentarz zad5 piotr33
     @Override
     public double Division(double A, double B) {
         double C;
