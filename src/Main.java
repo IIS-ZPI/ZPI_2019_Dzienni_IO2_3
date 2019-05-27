@@ -12,7 +12,6 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
     @Override
     public double Addition(double A, double B) {
         return A + B;
-        //komentarz
     }
   
     @Override
