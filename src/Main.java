@@ -23,7 +23,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
     public double Multiplication(double A, double B) {
         return A * B;
     }
-  
+    //komentarz 3
     @Override
     public double Division(double A, double B) {
         double C;
