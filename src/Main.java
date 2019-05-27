@@ -10,12 +10,14 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
         //komentarz trzeci
     }
 
+    //komentarz 1
     @Override
     public double Addition(double A, double B) {
         return A + B;
         //komentarz pierwszy
         //komentarz 1 - Mikołaj
     }
+    //komentarz 2
     //komentarz zad5 piotr11
     @Override
     public double Difference(double A, double B) {
@@ -29,6 +31,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
         //komentarz drugi
         //komentarz 3 - Mikolaj
     }
+    //komentarz 3
     //komentarz zad5 piotr33
     @Override
     public double Division(double A, double B) {
