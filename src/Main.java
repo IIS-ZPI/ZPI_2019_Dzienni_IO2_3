@@ -5,7 +5,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
         System.out.println("Grupa: ZPI_2019_Dzienni_IO2_3, Rola: operations, Team Leader: nciosek");
         System.out.println("209347");
         System.out.println("piotrek281097");
-        System.out.println("nciosek");
+        System.out.println("nciosek"); //komenatrz zadanie 6
         System.out.println("Bigoz005");
     }
 
