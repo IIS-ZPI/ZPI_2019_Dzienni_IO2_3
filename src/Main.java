@@ -9,6 +9,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
         System.out.println("Bigoz005");
     }
 
+    //komentarz 1
     @Override
     public double Addition(double A, double B) {
         return A + B;
