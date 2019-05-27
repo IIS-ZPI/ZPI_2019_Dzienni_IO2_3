@@ -7,6 +7,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
         System.out.println("piotrek281097");
         System.out.println("nciosek");
         System.out.println("Bigoz005");
+        //komentarz trzeci
     }
 
     @Override
@@ -23,6 +24,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
     @Override
     public double Multiplication(double A, double B) {
         return A * B;
+        //komentarz drugi
     }
   
     @Override
