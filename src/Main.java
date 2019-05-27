@@ -18,7 +18,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
     public double Difference(double A, double B) {
         return A - B;
     }
-
+    //zadanie 6
     @Override
     public double Multiplication(double A, double B) {
         return A * B;
