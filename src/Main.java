@@ -17,6 +17,7 @@ public class Main implements IArithmeticsDiff, IArithmeticsMult, IArithmeticsAdd
     @Override
     public double Difference(double A, double B) {
         return A - B;
+        //komentarz 2 - Mikołaj
     }
 
     @Override
