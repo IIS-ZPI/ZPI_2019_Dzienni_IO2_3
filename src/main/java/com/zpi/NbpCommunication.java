@@ -30,7 +30,7 @@ public class NbpCommunication {
 
     private static List<NbpTableA> getNbpTableA()
     {
-        final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/";
+        final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
