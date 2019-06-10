@@ -1,6 +1,7 @@
 package com.zpi;
 
 import com.google.gson.Gson;
+import com.zpi.data.NbpTableA;
 import com.zpi.data.NbpTableB;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class NbpCommunication {
 
     public static void main(String[] args) {
+        getNbpTableA();
         getNbpTableB();
     }
 
@@ -24,5 +26,17 @@ public class NbpCommunication {
         ArrayList<NbpTableB> nbpTableB = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableB[].class)));
         System.out.println(nbpTableB.get(0).getRates().get(0).getCode() + " " + nbpTableB.get(0).getRates().get(0).getMid());
         return nbpTableB;
+    }
+
+    private static List<NbpTableA> getNbpTableA()
+    {
+        final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        Gson gson = new Gson();
+        ArrayList<NbpTableA> nbpTableA = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableA[].class)));
+        System.out.println(nbpTableA.get(0).getRates().get(0).getCode() + " " + nbpTableA.get(0).getRates().get(0).getMid());
+        return nbpTableA;
     }
 }
