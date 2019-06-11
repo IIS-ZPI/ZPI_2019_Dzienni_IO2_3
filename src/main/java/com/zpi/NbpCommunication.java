@@ -1,6 +1,7 @@
 package com.zpi;
 
 import com.google.gson.Gson;
+import com.zpi.data.NbpSeriesA;
 import com.zpi.data.NbpTableA;
 import com.zpi.data.NbpTableB;
 import com.zpi.data.NbpTableC;
@@ -9,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class NbpCommunication {
 
@@ -16,7 +18,29 @@ public class NbpCommunication {
         getNbpTableA();
         getNbpTableB();
         getNbpTableC();
+
+        Scanner input = new Scanner(System.in);
+        String chosenCurrency, chosenPeriod;
+
+        System.out.println("Podaj walute z tabeli kursow walut typu A dla ktorej przeprowadzic analize: ");
+        chosenCurrency = input.nextLine();
+
+        System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
+        System.out.println("1. 1 tydzien(7 dni)\n"
+                           + "2. 2 tygodnie(14 dni)\n"
+                           + "3. 1 miesiac(30 dni)\n"
+                           + "4. 1 kwartal(90 dni)\n"
+                           + "5. pol roku(182 dni)\n"
+                           + "6. rok(365 dni)");
+        chosenPeriod = input.nextLine();
+        String daysPeriod = Methods.changeChosenPeriodIntoDays(chosenPeriod);
+
+        System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
+                           " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
+
+        NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
     }
+
 
     public static List<NbpTableB> getNbpTableB()
     {
@@ -53,4 +77,18 @@ public class NbpCommunication {
         System.out.println(nbpTableC.get(0).getRates().get(0).getCode() + " " + nbpTableC.get(0).getRates().get(0).getMid());
         return nbpTableC;
     }
+
+    public static NbpSeriesA getNbpSeriesAForGivenCurrencyFromGivenPeriod(String currency, String days) {
+
+        String url = "http://api.nbp.pl/api/exchangerates/rates/A/" + currency + "/last/" + days;
+
+        RestTemplate restTemplate = new RestTemplate();
+        String resultSeries = restTemplate.getForObject(url, String.class);
+        Gson gson = new Gson();
+        NbpSeriesA nbpSeriesA = gson.fromJson(resultSeries, NbpSeriesA.class);
+
+        return nbpSeriesA;
+    }
+
+
 }
