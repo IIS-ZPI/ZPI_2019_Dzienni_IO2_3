@@ -3,6 +3,7 @@ package com.zpi;
 import com.google.gson.Gson;
 import com.zpi.data.NbpTableA;
 import com.zpi.data.NbpTableB;
+import com.zpi.data.NbpTableC;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -38,5 +39,17 @@ public class NbpCommunication {
         ArrayList<NbpTableA> nbpTableA = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableA[].class)));
         System.out.println(nbpTableA.get(0).getRates().get(0).getCode() + " " + nbpTableA.get(0).getRates().get(0).getMid());
         return nbpTableA;
+    }
+
+    private static List<NbpTableC> getNbpTableC()
+    {
+        final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        Gson gson = new Gson();
+        ArrayList<NbpTableC> nbpTableC = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableC[].class)));
+        System.out.println(nbpTableC.get(0).getRates().get(0).getCode() + " " + nbpTableC.get(0).getRates().get(0).getMid());
+        return nbpTableC;
     }
 }
