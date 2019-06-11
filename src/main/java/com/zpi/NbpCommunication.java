@@ -39,4 +39,16 @@ public class NbpCommunication {
         System.out.println(nbpTableA.get(0).getRates().get(0).getCode() + " " + nbpTableA.get(0).getRates().get(0).getMid());
         return nbpTableA;
     }
+    
+    private static List<NbpTableC> getNbpTableC()
+    {
+        final String uri = "http://api.nbp.pl/api/exchangerates/tables/C/?format=json";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        Gson gson = new Gson();
+        ArrayList<NbpTableC> nbpTableC = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableC[].class)));
+        System.out.println(nbpTableC.get(0).getRates().get(0).getCode() + " " + nbpTableC.get(0).getRates().get(0).getMid());
+        return nbpTableC;
+    }
 }
