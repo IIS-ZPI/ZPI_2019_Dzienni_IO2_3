@@ -15,9 +15,10 @@ public class NbpCommunication {
     public static void main(String[] args) {
         getNbpTableA();
         getNbpTableB();
+        getNbpTableC();
     }
 
-    private static List<NbpTableB> getNbpTableB()
+    public static List<NbpTableB> getNbpTableB()
     {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/B/";
 
@@ -29,7 +30,7 @@ public class NbpCommunication {
         return nbpTableB;
     }
 
-    private static List<NbpTableA> getNbpTableA()
+    public static List<NbpTableA> getNbpTableA()
     {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
@@ -41,7 +42,7 @@ public class NbpCommunication {
         return nbpTableA;
     }
 
-    private static List<NbpTableC> getNbpTableC()
+    public static List<NbpTableC> getNbpTableC()
     {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
