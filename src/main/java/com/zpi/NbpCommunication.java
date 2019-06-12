@@ -1,10 +1,7 @@
 package com.zpi;
 
 import com.google.gson.Gson;
-import com.zpi.data.NbpSeriesA;
-import com.zpi.data.NbpTableA;
-import com.zpi.data.NbpTableB;
-import com.zpi.data.NbpTableC;
+import com.zpi.data.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -39,6 +36,8 @@ public class NbpCommunication {
                            " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
 
         NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
+        NbpSeriesC.analyze(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
+
     }
 
 
@@ -88,6 +87,18 @@ public class NbpCommunication {
         NbpSeriesA nbpSeriesA = gson.fromJson(resultSeries, NbpSeriesA.class);
 
         return nbpSeriesA;
+    }
+
+    public static NbpSeriesC getNbpSeriesCForGivenCurrencyFromGivenPeriod(String currency, String days) {
+
+        String url = "http://api.nbp.pl/api/exchangerates/rates/C/" + currency + "/last/" + days;
+
+        RestTemplate restTemplate = new RestTemplate();
+        String resultSeries = restTemplate.getForObject(url, String.class);
+        Gson gson = new Gson();
+        NbpSeriesC nbpSeriesC = gson.fromJson(resultSeries, NbpSeriesC.class);
+
+        return nbpSeriesC;
     }
 
 
