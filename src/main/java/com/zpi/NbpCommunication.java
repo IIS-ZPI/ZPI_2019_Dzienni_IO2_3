@@ -20,11 +20,18 @@ public class NbpCommunication {
         getNbpTableC();
 
         Scanner input = new Scanner(System.in);
-        String chosenCurrency, chosenPeriod;
+        String chosenCurrency, chosenPeriod, chosenSesion;
 
         System.out.println("Podaj walute z tabeli kursow walut typu A dla ktorej przeprowadzic analize: ");
         chosenCurrency = input.nextLine();
 
+        System.out.println("Wybierz sesje: ");
+        System.out.println("1. wzrostowa\n"
+                + "2. spadkowa\n"
+                + "3. bez zmian");
+        chosenSesion = input.nextLine();
+
+        
         System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
         System.out.println("1. 1 tydzien(7 dni)\n"
                            + "2. 2 tygodnie(14 dni)\n"
