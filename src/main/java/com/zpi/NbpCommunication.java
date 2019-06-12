@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class NbpCommunication {
 
     public static void main(String[] args) {
@@ -21,30 +23,29 @@ public class NbpCommunication {
 
         System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
         System.out.println("1. 1 tydzien(7 dni)\n"
-                           + "2. 2 tygodnie(14 dni)\n"
-                           + "3. 1 miesiac(30 dni)\n"
-                           + "4. 1 kwartal(90 dni)\n"
-                           + "5. pol roku(182 dni)\n"
-                           + "6. rok(365 dni)");
+                + "2. 2 tygodnie(14 dni)\n"
+                + "3. 1 miesiac(30 dni)\n"
+                + "4. 1 kwartal(90 dni)\n"
+                + "5. pol roku(182 dni)\n"
+                + "6. rok(365 dni)");
         chosenPeriod = input.nextLine();
-        String daysPeriod = Methods.changeChosenPeriodIntoDays(chosenPeriod);
+        String amountOfRecords = Methods.changeChosenPeriodIntoDays(chosenPeriod);
 
         System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                           " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
+                " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-        NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
+        NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
 
         System.out.println("\n");
 
         System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
+                " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-        NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
+        NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
     }
 
 
-    public static List<NbpTableB> getNbpTableB()
-    {
+    public static List<NbpTableB> getNbpTableB() {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/B/";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -55,8 +56,7 @@ public class NbpCommunication {
         return nbpTableB;
     }
 
-    public static List<NbpTableA> getNbpTableA()
-    {
+    public static List<NbpTableA> getNbpTableA() {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -67,8 +67,7 @@ public class NbpCommunication {
         return nbpTableA;
     }
 
-    public static List<NbpTableC> getNbpTableC()
-    {
+    public static List<NbpTableC> getNbpTableC() {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -93,14 +92,14 @@ public class NbpCommunication {
 
     public static NbpSeriesB getNbpSeriesBForGivenCurrencyFromGivenPeriod(String currency, String days) {
 
+        NbpSeriesB nbpSeriesB;
         String url = "http://api.nbp.pl/api/exchangerates/rates/B/" + currency + "/last/" + days;
 
         RestTemplate restTemplate = new RestTemplate();
         String resultSeries = restTemplate.getForObject(url, String.class);
         Gson gson = new Gson();
-        NbpSeriesB nbpSeriesB = gson.fromJson(resultSeries, NbpSeriesB.class);
+        nbpSeriesB = gson.fromJson(resultSeries, NbpSeriesB.class);
 
         return nbpSeriesB;
     }
-
 }

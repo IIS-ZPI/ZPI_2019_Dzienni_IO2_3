@@ -72,22 +72,22 @@ public class Methods {
 
         switch(chosenPeriod) {
             case "1":
-                days = "7";
+                days = "5";
                 break;
             case "2":
-                days = "14";
+                days = "10";
                 break;
             case "3":
-                days = "30";
+                days = "26";
                 break;
             case "4":
-                days = "90";
+                days = "78";
                 break;
             case "5":
-                days = "182";
+                days = "127";
                 break;
             case "6":
-                days = "365";
+                days = "255";
                 break;
             default:
                 days = "1";
