@@ -1,10 +1,7 @@
 package com.zpi;
 
 import com.google.gson.Gson;
-import com.zpi.data.NbpSeriesA;
-import com.zpi.data.NbpTableA;
-import com.zpi.data.NbpTableB;
-import com.zpi.data.NbpTableC;
+import com.zpi.data.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -15,14 +12,11 @@ import java.util.Scanner;
 public class NbpCommunication {
 
     public static void main(String[] args) {
-        getNbpTableA();
-        getNbpTableB();
-        getNbpTableC();
 
         Scanner input = new Scanner(System.in);
         String chosenCurrency, chosenPeriod;
 
-        System.out.println("Podaj walute z tabeli kursow walut typu A dla ktorej przeprowadzic analize: ");
+        System.out.println("Podaj walute z tabeli kursow walut typu A i B dla ktorej przeprowadzic analize: ");
         chosenCurrency = input.nextLine();
 
         System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
@@ -39,6 +33,13 @@ public class NbpCommunication {
                            " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
 
         NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
+
+        System.out.println("\n");
+
+        System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
+                " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
+
+        NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
     }
 
 
@@ -90,5 +91,16 @@ public class NbpCommunication {
         return nbpSeriesA;
     }
 
+    public static NbpSeriesB getNbpSeriesBForGivenCurrencyFromGivenPeriod(String currency, String days) {
+
+        String url = "http://api.nbp.pl/api/exchangerates/rates/B/" + currency + "/last/" + days;
+
+        RestTemplate restTemplate = new RestTemplate();
+        String resultSeries = restTemplate.getForObject(url, String.class);
+        Gson gson = new Gson();
+        NbpSeriesB nbpSeriesB = gson.fromJson(resultSeries, NbpSeriesB.class);
+
+        return nbpSeriesB;
+    }
 
 }
