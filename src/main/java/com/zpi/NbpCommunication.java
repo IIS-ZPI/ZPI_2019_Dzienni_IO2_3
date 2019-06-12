@@ -19,26 +19,7 @@ public class NbpCommunication {
         getNbpTableB();
         getNbpTableC();
 
-        Scanner input = new Scanner(System.in);
-        String chosenCurrency, chosenPeriod;
-
-        System.out.println("Podaj walute z tabeli kursow walut typu A dla ktorej przeprowadzic analize: ");
-        chosenCurrency = input.nextLine();
-
-        System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
-        System.out.println("1. 1 tydzien(7 dni)\n"
-                           + "2. 2 tygodnie(14 dni)\n"
-                           + "3. 1 miesiac(30 dni)\n"
-                           + "4. 1 kwartal(90 dni)\n"
-                           + "5. pol roku(182 dni)\n"
-                           + "6. rok(365 dni)");
-        chosenPeriod = input.nextLine();
-        String daysPeriod = Methods.changeChosenPeriodIntoDays(chosenPeriod);
-
-        System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                           " dla waluty " + chosenCurrency + " w ostatnim okresie o długości dni: " + daysPeriod);
-
-        NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, daysPeriod));
+        Menu menu = new Menu();
     }
 
 
