@@ -102,4 +102,17 @@ public class NbpCommunication {
 
         return nbpSeriesB;
     }
+
+
+    public static NbpSeriesC getNbpSeriesCForGivenCurrencyFromGivenPeriod(String currency, String days) {
+
+        String url = "http://api.nbp.pl/api/exchangerates/rates/C/" + currency + "/last/" + days;
+
+        RestTemplate restTemplate = new RestTemplate();
+        String resultSeries = restTemplate.getForObject(url, String.class);
+        Gson gson = new Gson();
+        NbpSeriesC nbpSeriesC = gson.fromJson(resultSeries, NbpSeriesC.class);
+
+        return nbpSeriesC;
+    }
 }
