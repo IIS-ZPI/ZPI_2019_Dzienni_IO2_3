@@ -1,11 +1,11 @@
-package com.zpi.data;
+package com.zpi.data.series;
 
 import com.zpi.Methods;
+import com.zpi.data.rates.RatesForSeriesC;
 
 import java.util.List;
 
 public class NbpSeriesC {
-
     String table;
     String no;
     String tradingDate;

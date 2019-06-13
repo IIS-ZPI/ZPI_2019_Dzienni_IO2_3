@@ -1,8 +1,10 @@
-package com.zpi.data;
+package com.zpi.data.table;
+
+import com.zpi.data.rates.Rates;
 
 import java.util.List;
 
-public class NbpTableA {
+public class NbpTableB {
     String table;
     String no;
     String effectiveDate;

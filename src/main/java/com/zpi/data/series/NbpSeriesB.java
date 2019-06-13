@@ -1,11 +1,11 @@
-package com.zpi.data;
+package com.zpi.data.series;
 
 import com.zpi.Methods;
+import com.zpi.data.rates.Rates;
 
 import java.util.List;
 
-public class NbpSeriesA {
-
+public class NbpSeriesB {
     String table;
     String currency;
     String code;
@@ -27,11 +27,11 @@ public class NbpSeriesA {
         return rates;
     }
 
-    public static void analyze(NbpSeriesA nbpSeriesA) {
-        double[] valuesCurrency = new double[nbpSeriesA.getRates().size()];
+    public static void analyze(NbpSeriesB nbpSeriesB) {
+        double[] valuesCurrency = new double[nbpSeriesB.getRates().size()];
 
-        for (int i = 0; i < nbpSeriesA.getRates().size(); i++) {
-            valuesCurrency[i] = nbpSeriesA.getRates().get(i).getMid();
+        for (int i = 0; i < nbpSeriesB.getRates().size(); i++) {
+            valuesCurrency[i] = nbpSeriesB.getRates().get(i).getMid();
         }
 
         System.out.println("Mediana wynosi: " + Methods.findMedian(valuesCurrency));
@@ -40,4 +40,3 @@ public class NbpSeriesA {
         System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(valuesCurrency));
     }
 }
-

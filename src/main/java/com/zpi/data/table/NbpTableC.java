@@ -1,4 +1,6 @@
-package com.zpi.data;
+package com.zpi.data.table;
+
+import com.zpi.data.rates.Rates;
 
 import java.util.List;
 
