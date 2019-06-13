@@ -1,14 +1,13 @@
 package com.zpi;
 
-import com.zpi.data.NbpTableA;
-import com.zpi.data.NbpTableB;
-import com.zpi.data.NbpTableC;
+import com.zpi.data.table.NbpTableA;
+import com.zpi.data.table.NbpTableB;
+import com.zpi.data.table.NbpTableC;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 public class NbpTableController {
-
     private NbpCommunication nbpCommunication;
 
     @RequestMapping(method = RequestMethod.GET,value = "/GET")

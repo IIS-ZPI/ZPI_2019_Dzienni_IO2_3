@@ -1,7 +1,12 @@
 package com.zpi;
 
 import com.google.gson.Gson;
-import com.zpi.data.*;
+import com.zpi.data.series.NbpSeriesA;
+import com.zpi.data.series.NbpSeriesB;
+import com.zpi.data.series.NbpSeriesC;
+import com.zpi.data.table.NbpTableA;
+import com.zpi.data.table.NbpTableB;
+import com.zpi.data.table.NbpTableC;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -9,12 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 public class NbpCommunication {
 
     public static void main(String[] args) {
-
         Scanner input = new Scanner(System.in);
         String chosenCurrency, chosenPeriod;
 
@@ -79,7 +81,6 @@ public class NbpCommunication {
     }
 
     public static NbpSeriesA getNbpSeriesAForGivenCurrencyFromGivenPeriod(String currency, String days) {
-
         String url = "http://api.nbp.pl/api/exchangerates/rates/A/" + currency + "/last/" + days;
 
         RestTemplate restTemplate = new RestTemplate();
@@ -91,7 +92,6 @@ public class NbpCommunication {
     }
 
     public static NbpSeriesB getNbpSeriesBForGivenCurrencyFromGivenPeriod(String currency, String days) {
-
         NbpSeriesB nbpSeriesB;
         String url = "http://api.nbp.pl/api/exchangerates/rates/B/" + currency + "/last/" + days;
 
@@ -103,9 +103,7 @@ public class NbpCommunication {
         return nbpSeriesB;
     }
 
-
     public static NbpSeriesC getNbpSeriesCForGivenCurrencyFromGivenPeriod(String currency, String days) {
-
         String url = "http://api.nbp.pl/api/exchangerates/rates/C/" + currency + "/last/" + days;
 
         RestTemplate restTemplate = new RestTemplate();

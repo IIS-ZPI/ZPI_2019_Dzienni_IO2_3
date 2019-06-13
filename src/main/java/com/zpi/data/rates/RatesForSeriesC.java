@@ -1,4 +1,4 @@
-package com.zpi.data;
+package com.zpi.data.rates;
 
 public class RatesForSeriesC {
     String currency;
