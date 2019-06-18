@@ -51,4 +51,39 @@ public class MethodsTest {
         assertThat(Methods.findCoefficientOfVariation(arrayTest), is(62.36));
     }
 
+    @Test
+    public void findAmountOfGrowthSessionsShouldReturn4() {
+        double[] values = {1,2,3,1,5,6,3,2,2,2};
+
+        assertThat(Methods.findAmountOfGrowthSessions(values), is(4));
+    }
+
+    @Test
+    public void findAmountOfGrowthSessionsShouldReturn3() {
+        double[] values = {3,0,3,5,4,6,6};
+
+        assertThat(Methods.findAmountOfGrowthSessions(values), is(3));
+    }
+
+    @Test
+    public void findAmountOfDownwardSessionsShouldReturn3() {
+        double[] values = {1,2,3,1,5,6,3,2,2,2};
+
+        assertThat(Methods.findAmountOfDownwardSessions(values), is(3));
+    }
+
+    @Test
+    public void findAmountOfDownwardSessionsShouldReturn0() {
+        double[] values = {1,1,1,1,1,5,5};
+
+        assertThat(Methods.findAmountOfDownwardSessions(values), is(0));
+    }
+
+    @Test
+    public void findAmountOfDownwardSessionsShouldReturn2() {
+        double[] values = {3,5,0,1,2,0,0,1};
+
+        assertThat(Methods.findAmountOfDownwardSessions(values), is(2));
+    }
+
 }
