@@ -18,9 +18,12 @@ public class NbpCommunication {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String chosenCurrency, chosenPeriod;
+        String chosenCurrency, chosenPeriod, chosenTable;
 
-        System.out.println("Podaj walute z tabeli kursow walut typu A i B dla ktorej przeprowadzic analize: ");
+        System.out.println("Podaj dla jakiej tabeli przeprowadzic analize:");
+        chosenTable = input.nextLine();
+
+        System.out.println("Podaj walute dla ktorej ma byc przeprowadzona analiza: ");
         chosenCurrency = input.nextLine();
 
         System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
@@ -30,20 +33,33 @@ public class NbpCommunication {
                 + "4. 1 kwartal(90 dni)\n"
                 + "5. pol roku(182 dni)\n"
                 + "6. rok(365 dni)");
+
         chosenPeriod = input.nextLine();
         String amountOfRecords = Methods.changeChosenPeriodIntoDays(chosenPeriod);
 
-        System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+        if (chosenTable.equals("A")) {
+            System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
+                    " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-        NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+            NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+            System.out.println("\n");
+        }
 
-        System.out.println("\n");
+        if (chosenTable.equals("B")) {
+            System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
+                    " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-        System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+            NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+            System.out.println("\n");
+        }
 
-        NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+        if (chosenTable.equals("C")) {
+            System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
+                    " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+
+            NbpSeriesC.analyze(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+            System.out.println("\n");
+        }
     }
 
 

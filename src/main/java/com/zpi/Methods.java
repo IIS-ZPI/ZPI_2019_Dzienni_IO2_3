@@ -3,6 +3,7 @@ package com.zpi;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class Methods {
 
@@ -64,13 +65,13 @@ public class Methods {
     }
 
     public static double findCoefficientOfVariation(double[] values) {
-        return roundValue(findStandardDeviation(values) / findMean(values)*100);
+        return roundValue(findStandardDeviation(values) / findMean(values) * 100);
     }
 
     public static String changeChosenPeriodIntoDays(String chosenPeriod) {
         String days;
 
-        switch(chosenPeriod) {
+        switch (chosenPeriod) {
             case "1":
                 days = "5";
                 break;
