@@ -100,8 +100,6 @@ public class Menu {
             }
         }
 
-        System.out.println(Arrays.toString(currency.toArray()));
-
         if(currency.contains(input)) {
             return true;
         }
