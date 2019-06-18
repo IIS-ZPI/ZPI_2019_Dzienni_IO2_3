@@ -91,6 +91,18 @@ public class Methods {
         return counter;
     }
 
+    public static int findAmountOfUnchangedSessions(double[] values){
+        int counter = 0;
+
+        for (int i = 1; i < values.length; i++) {
+            if (values[i] - values[i - 1] == 0) {
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+
 
     public static String changeChosenPeriodIntoDays(String chosenPeriod) {
         String days;
