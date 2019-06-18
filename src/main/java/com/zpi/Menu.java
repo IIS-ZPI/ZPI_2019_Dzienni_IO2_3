@@ -4,19 +4,33 @@ import java.util.*;
 
 import com.zpi.data.series.NbpSeriesA;
 import com.zpi.data.series.NbpSeriesB;
+import com.zpi.data.series.NbpSeriesC;
 import com.zpi.data.table.NbpTableA;
 
 import static com.zpi.NbpCommunication.getNbpSeriesAForGivenCurrencyFromGivenPeriod;
 import static com.zpi.NbpCommunication.getNbpSeriesBForGivenCurrencyFromGivenPeriod;
+import static com.zpi.NbpCommunication.getNbpSeriesCForGivenCurrencyFromGivenPeriod;
 
 public class Menu {
-    private Scanner input = new Scanner(System.in);
-    private String chosenCurrency, chosenPeriod;
+    Scanner input = new Scanner(System.in);
+    String chosenCurrency, chosenPeriod, chosenTable;
 
     public Menu() {
         while (true) {
-            System.out.println("Podaj kod waluty z tabeli kursow walut typu A dla ktorej przeprowadzic analize: ");
-            System.out.println("Przykład: USD, EUR, AUD");
+
+            System.out.println("Podaj dla jakiej tabeli przeprowadzic analize:");
+            System.out.println("Możliwe: A, B, C.");
+            chosenTable = input.nextLine();
+            if (!isCorrectTableLetterInput(chosenTable)) {
+                if (repeatAttempt()) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+
+            System.out.println("Podaj kod waluty z tabeli kursow walut dla ktorej przeprowadzic analize: ");
+            System.out.println("Przykład: USD, EUR, AUD.");
             chosenCurrency = input.nextLine();
             if (!isCorrectCurrencyInput(chosenCurrency)) {
                 if (repeatAttempt()) {
@@ -46,18 +60,30 @@ public class Menu {
 
             String amountOfRecords = Methods.changeChosenPeriodIntoDays(chosenPeriod);
 
-            System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                    " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+            if (chosenTable.equals("A")) {
+                System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
+                        " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-            NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
 
-            System.out.println("\n");
+                System.out.println("\n");
+            }
 
-            System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                    " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+            if (chosenTable.equals("B")) {
+                System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
+                        " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-            NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                System.out.println("\n");
+            }
 
+            if (chosenTable.equals("C")) {
+                System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
+                        " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+
+                NbpSeriesC.analyze(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                System.out.println("\n");
+            }
             if (exit()) {
                 continue;
             } else {
@@ -95,6 +121,7 @@ public class Menu {
         }
     }
 
+
     private Boolean isCorrectCurrencyInput(String input) {
         List<NbpTableA> nbpTableAList = NbpCommunication.getNbpTableA();
         Set<String> currency = new HashSet<>();
@@ -111,11 +138,18 @@ public class Menu {
         return false;
     }
 
-
     private Boolean isCorrectPeriodInput(String input) {
         if (input.matches("[1-6]")) {
             return true;
         }
         return false;
     }
+
+    private Boolean isCorrectTableLetterInput(String input) {
+        if (input.matches("A")||input.matches("B")||input.matches("C")) {
+            return true;
+        }
+        return false;
+    }
+
 }
