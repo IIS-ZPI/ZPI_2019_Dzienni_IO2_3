@@ -6,6 +6,8 @@ import com.zpi.data.series.NbpSeriesA;
 import com.zpi.data.series.NbpSeriesB;
 import com.zpi.data.series.NbpSeriesC;
 import com.zpi.data.table.NbpTableA;
+import com.zpi.data.table.NbpTableB;
+import com.zpi.data.table.NbpTableC;
 
 import static com.zpi.NbpCommunication.getNbpSeriesAForGivenCurrencyFromGivenPeriod;
 import static com.zpi.NbpCommunication.getNbpSeriesBForGivenCurrencyFromGivenPeriod;
@@ -123,12 +125,34 @@ public class Menu {
 
 
     private Boolean isCorrectCurrencyInput(String input) {
-        List<NbpTableA> nbpTableAList = NbpCommunication.getNbpTableA();
         Set<String> currency = new HashSet<>();
-        for (int i = 0; i < nbpTableAList.size(); i++) {
-            for (int j = 0; j < nbpTableAList.get(i).getRates().size(); j++) {
-                currency.add(nbpTableAList.get(i).getRates().get(j).getCode());
+
+        if(chosenTable.equals("A")) {
+            List<NbpTableA> nbpTableList;
+            nbpTableList = NbpCommunication.getNbpTableA();
+            for (int i = 0; i < nbpTableList.size(); i++) {
+                for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
+                    currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+                }
             }
+        } else if(chosenTable.equals("B")) {
+            List<NbpTableB> nbpTableList;
+            nbpTableList = NbpCommunication.getNbpTableB();
+            for (int i = 0; i < nbpTableList.size(); i++) {
+                for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
+                    currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+                }
+            }
+        } else if(chosenTable.equals("C")) {
+            List<NbpTableC> nbpTableList;
+            nbpTableList = NbpCommunication.getNbpTableC();
+            for (int i = 0; i < nbpTableList.size(); i++) {
+                for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
+                    currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+                }
+            }
+        } else {
+            return false;
         }
 
         if (currency.contains(input)) {
@@ -146,7 +170,7 @@ public class Menu {
     }
 
     private Boolean isCorrectTableLetterInput(String input) {
-        if (input.matches("A")||input.matches("B")||input.matches("C")) {
+        if (input.matches("[ABC]")) {
             return true;
         }
         return false;
