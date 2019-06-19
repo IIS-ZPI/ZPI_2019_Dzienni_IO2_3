@@ -20,18 +20,6 @@ public class NbpCommunication {
         Menu menu = new Menu();
     }
 
-
-    public static List<NbpTableB> getNbpTableB() {
-        final String uri = "http://api.nbp.pl/api/exchangerates/tables/B/";
-
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-        Gson gson = new Gson();
-        ArrayList<NbpTableB> nbpTableB = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableB[].class)));
-
-        return nbpTableB;
-    }
-
     public static List<NbpTableA> getNbpTableA() {
         final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
@@ -43,8 +31,19 @@ public class NbpCommunication {
         return nbpTableA;
     }
 
+    public static List<NbpTableB> getNbpTableB() {
+        final String uri = "http://api.nbp.pl/api/exchangerates/tables/B/?format=json";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        Gson gson = new Gson();
+        ArrayList<NbpTableB> nbpTableB = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableB[].class)));
+
+        return nbpTableB;
+    }
+
     public static List<NbpTableC> getNbpTableC() {
-        final String uri = "http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
+        final String uri = "http://api.nbp.pl/api/exchangerates/tables/C/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
@@ -55,7 +54,7 @@ public class NbpCommunication {
     }
 
     public static NbpSeriesA getNbpSeriesAForGivenCurrencyFromGivenPeriod(String currency, String days) {
-        String url = "http://api.nbp.pl/api/exchangerates/rates/A/" + currency + "/last/" + days;
+        String url = "http://api.nbp.pl/api/exchangerates/rates/A/" + currency + "/last/" + days + "/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
         String resultSeries = restTemplate.getForObject(url, String.class);
@@ -67,7 +66,7 @@ public class NbpCommunication {
 
     public static NbpSeriesB getNbpSeriesBForGivenCurrencyFromGivenPeriod(String currency, String days) {
         NbpSeriesB nbpSeriesB;
-        String url = "http://api.nbp.pl/api/exchangerates/rates/B/" + currency + "/last/" + days;
+        String url = "http://api.nbp.pl/api/exchangerates/rates/B/" + currency + "/last/" + days + "/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
         String resultSeries = restTemplate.getForObject(url, String.class);
@@ -78,7 +77,7 @@ public class NbpCommunication {
     }
 
     public static NbpSeriesC getNbpSeriesCForGivenCurrencyFromGivenPeriod(String currency, String days) {
-        String url = "http://api.nbp.pl/api/exchangerates/rates/C/" + currency + "/last/" + days;
+        String url = "http://api.nbp.pl/api/exchangerates/rates/C/" + currency + "/last/" + days + "/?format=json";
 
         RestTemplate restTemplate = new RestTemplate();
         String resultSeries = restTemplate.getForObject(url, String.class);
