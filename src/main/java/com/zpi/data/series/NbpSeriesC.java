@@ -20,21 +20,15 @@ public class NbpSeriesC {
         return rates;
     }
 
-    public static void analyze(NbpSeriesC nbpSeriesC) {
+    public static void analyzeStatisticalMeasures(NbpSeriesC nbpSeriesC) {
         double[] valuesCurrencyForBid = getValuesCurrencyForBid(nbpSeriesC);
         double[] valuesCurrencyForAsk = getValuesCurrencyForAsk(nbpSeriesC);
 
         System.out.println("\nCena sprzedaży");
-        System.out.println("Mediana wynosi: " + Methods.findMedian(valuesCurrencyForBid));
-        System.out.println("Dominanta wynosi: " + Methods.findMode(valuesCurrencyForBid));
-        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(valuesCurrencyForBid));
-        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(valuesCurrencyForBid));
+        Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForBid);
 
         System.out.println("\nCena kupna");
-        System.out.println("Mediana wynosi: " + Methods.findMedian(valuesCurrencyForAsk));
-        System.out.println("Dominanta wynosi: " + Methods.findMode(valuesCurrencyForAsk));
-        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(valuesCurrencyForAsk));
-        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(valuesCurrencyForAsk));
+        Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForAsk);
     }
 
     public static void analyzeSessions(NbpSeriesC nbpSeriesC) {
@@ -42,14 +36,25 @@ public class NbpSeriesC {
         double[] valuesCurrencyForAsk = getValuesCurrencyForAsk(nbpSeriesC);
 
         System.out.println("\nDla ceny kupna");
-        System.out.println("Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(valuesCurrencyForBid));
-        System.out.println("Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(valuesCurrencyForBid));
-        System.out.println("Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(valuesCurrencyForBid));
+        Methods.showResultsOfSessionAnalysis(valuesCurrencyForBid);
 
         System.out.println("\nDla ceny sprzedaży");
-        System.out.println("Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(valuesCurrencyForAsk));
-        System.out.println("Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(valuesCurrencyForAsk));
-        System.out.println("Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(valuesCurrencyForAsk));
+        Methods.showResultsOfSessionAnalysis(valuesCurrencyForAsk);
+    }
+
+    public static void compareTwoCurrencies(NbpSeriesC nbpSeriesC1, String currency1, NbpSeriesC nbpSeriesC2, String currency2) {
+        double[] valuesCurrencyForBid1 = getValuesCurrencyForBid(nbpSeriesC1);
+        double[] valuesCurrencyForBid2 = getValuesCurrencyForBid(nbpSeriesC2);
+
+        double[] valuesCurrencyForAsk1 = getValuesCurrencyForAsk(nbpSeriesC1);
+        double[] valuesCurrencyForAsk2 = getValuesCurrencyForAsk(nbpSeriesC2);
+
+        System.out.println("\nDla ceny kupna");
+        Methods.showDifferencesBetweenTwoCurrencies(valuesCurrencyForBid1, currency1, valuesCurrencyForBid2, currency2);
+
+        System.out.println("\nDla ceny sprzedaży");
+        Methods.showDifferencesBetweenTwoCurrencies(valuesCurrencyForAsk1, currency1, valuesCurrencyForAsk2, currency2);
+
     }
 
     public static double [] getValuesCurrencyForBid(NbpSeriesC nbpSeriesC) {
