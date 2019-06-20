@@ -28,16 +28,30 @@ public class NbpSeriesA {
     }
 
     public static void analyze(NbpSeriesA nbpSeriesA) {
+        double[] valuesCurrency = getValuesCurrency(nbpSeriesA);
+
+        System.out.println("Mediana wynosi: " + Methods.findMedian(valuesCurrency));
+        System.out.println("Dominanta wynosi: " + Methods.findMode(valuesCurrency));
+        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(valuesCurrency));
+        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(valuesCurrency));
+    }
+
+    public static void analyzeSessions(NbpSeriesA nbpSeriesA) {
+        double[] valuesCurrency = getValuesCurrency(nbpSeriesA);
+
+        System.out.println("Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(valuesCurrency));
+        System.out.println("Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(valuesCurrency));
+        System.out.println("Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(valuesCurrency));
+    }
+
+    public static double [] getValuesCurrency(NbpSeriesA nbpSeriesA) {
         double[] valuesCurrency = new double[nbpSeriesA.getRates().size()];
 
         for (int i = 0; i < nbpSeriesA.getRates().size(); i++) {
             valuesCurrency[i] = nbpSeriesA.getRates().get(i).getMid();
         }
 
-        System.out.println("Mediana wynosi: " + Methods.findMedian(valuesCurrency));
-        System.out.println("Dominanta wynosi: " + Methods.findMode(valuesCurrency));
-        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(valuesCurrency));
-        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(valuesCurrency));
+        return valuesCurrency;
     }
 }
 
