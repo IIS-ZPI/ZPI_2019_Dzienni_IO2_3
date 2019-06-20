@@ -103,6 +103,49 @@ public class Methods {
         return counter;
     }
 
+    public static void showDifferencesBetweenTwoCurrencies(double[] values1, String currency1, double[] values2, String currency2) {
+
+        System.out.println("\nAnaliza pokazująca porównanie dwóch walut, ich wzrostów czy spadków względem dnia poprzedniego");
+
+        for(int i = 1; i < values1.length; i++) {
+            double diff1 = values1[i] - values1[i-1];
+            double diff2 = values2[i] - values2[i-1];
+
+            System.out.println(i + " porównanie");
+            showCurrencyAndDifference(currency1, diff1);
+            showCurrencyAndDifference(currency2, diff2);
+
+            System.out.println();
+        }
+
+    }
+
+    public static void showResultsOfSessionAnalysis(double[] values) {
+        System.out.println("Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(values));
+        System.out.println("Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(values));
+        System.out.println("Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(values));
+    }
+
+    public static void showResultsOfStatisticalMeasuresAnalysis(double[] values) {
+        System.out.println("Mediana wynosi: " + Methods.findMedian(values));
+        System.out.println("Dominanta wynosi: " + Methods.findMode(values));
+        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(values));
+        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(values));
+    }
+
+    public static void showCurrencyAndDifference(String currency, double diff) {
+        System.out.print("waluta: " + currency + " ");
+
+        if(diff > 0) {
+            System.out.println("Wzrost: " + diff);
+        }
+        else if(diff < 0) {
+            System.out.println("Spadek: " + diff);
+        }
+        else {
+            System.out.println("Bez zmian");
+        }
+    }
 
     public static String changeChosenPeriodIntoDays(String chosenPeriod) {
         String days;

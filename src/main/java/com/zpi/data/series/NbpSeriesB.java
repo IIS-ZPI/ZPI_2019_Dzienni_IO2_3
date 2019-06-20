@@ -27,21 +27,23 @@ public class NbpSeriesB {
         return rates;
     }
 
-    public static void analyze(NbpSeriesB nbpSeriesB) {
+    public static void analyzeStatisticalMeasures(NbpSeriesB nbpSeriesB) {
         double[] valuesCurrency = getValuesCurrency(nbpSeriesB);
 
-        System.out.println("Mediana wynosi: " + Methods.findMedian(valuesCurrency));
-        System.out.println("Dominanta wynosi: " + Methods.findMode(valuesCurrency));
-        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(valuesCurrency));
-        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(valuesCurrency));
+        Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrency);
     }
 
     public static void analyzeSessions(NbpSeriesB nbpSeriesB) {
         double[] valuesCurrency = getValuesCurrency(nbpSeriesB);
 
-        System.out.println("Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(valuesCurrency));
-        System.out.println("Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(valuesCurrency));
-        System.out.println("Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(valuesCurrency));
+        Methods.showResultsOfSessionAnalysis(valuesCurrency);
+    }
+
+    public static void compareTwoCurrencies(NbpSeriesB nbpSeriesB1, String currency1, NbpSeriesB nbpSeriesB2, String currency2) {
+        double[] valuesCurrency1 = getValuesCurrency(nbpSeriesB1);
+        double[] valuesCurrency2 = getValuesCurrency(nbpSeriesB2);
+
+        Methods.showDifferencesBetweenTwoCurrencies(valuesCurrency1, currency1, valuesCurrency2, currency2);
     }
 
     public static double [] getValuesCurrency(NbpSeriesB nbpSeriesB) {

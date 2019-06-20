@@ -66,7 +66,13 @@ public class Menu {
                 System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
                         " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesA.analyze(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                NbpSeriesA.analyzeStatisticalMeasures(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+
+                //test funkcji analyzeSessions, trzeba zrobić do tego opcje w menu
+                NbpSeriesA.analyzeSessions(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                //test funkcji compareTwoCurrencies, trzeba zrobić do tego opcje w menu
+                NbpSeriesA.compareTwoCurrencies(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                        getNbpSeriesAForGivenCurrencyFromGivenPeriod("EUR", amountOfRecords), "EUR");
 
                 System.out.println("\n");
             }
@@ -75,7 +81,7 @@ public class Menu {
                 System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
                         " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesB.analyze(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                NbpSeriesB.analyzeStatisticalMeasures(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
                 System.out.println("\n");
             }
 
@@ -83,8 +89,14 @@ public class Menu {
                 System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
                         " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesC.analyze(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                NbpSeriesC.analyzeStatisticalMeasures(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+
+                NbpSeriesC.compareTwoCurrencies(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                        getNbpSeriesCForGivenCurrencyFromGivenPeriod("EUR", amountOfRecords), "EUR");
+
                 System.out.println("\n");
+
+
             }
             if (exit()) {
                 continue;
