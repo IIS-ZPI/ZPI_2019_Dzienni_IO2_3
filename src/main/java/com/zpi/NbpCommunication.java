@@ -29,6 +29,7 @@ public class NbpCommunication {
         ArrayList<NbpTableA> nbpTableA = new ArrayList<>(Arrays.asList(gson.fromJson(result, NbpTableA[].class)));
 
         return nbpTableA;
+        
     }
 
     public static List<NbpTableB> getNbpTableB() {
