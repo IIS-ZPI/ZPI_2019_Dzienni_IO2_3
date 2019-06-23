@@ -33,5 +33,5 @@ deploy:
     repo: IIS-ZPI/ZPI_2019_Dzienni_io2_3
     branches:
       only:
-      - feature-updateREADME
+      - test
     body: "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
