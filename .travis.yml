@@ -32,9 +32,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $TOKEN
-  file_glob: true
-
-  file: "target/*.jar"
+  file: "src/main/java/com.zpi/NbpCommunication.java"
   skip_cleanup: true
   on:
     repo: IIS-ZPI/ZPI_2019_Dzienni_io2_3
