@@ -1,5 +1,12 @@
 language: java
 
+before_install:
+- chmod +x mvnw
+
+install:
+- mvn -N io.takari:maven:wrapper
+- ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
 notifications:
   email:
     recipients:
@@ -11,7 +18,7 @@ script:
 - mvn validate
 - mvn compile
 - mvn test -B
-- if [ "$TRAVIS_BRANCH" == "master" ]; then
+- if [ "$TRAVIS_BRANCH" == "test" ]; then
   mvn package;
   fi
 
