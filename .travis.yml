@@ -32,6 +32,10 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $TOKEN
+  tag_name: $TRAVIS_TAG
+  target_commitish: $TRAVIS_COMMIT
+  name: $TRAVIS_TAG
+  overwrite: true
   file: "src/main/java/com.zpi/NbpCommunication.java"
   skip_cleanup: true
   on:
