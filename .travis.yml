@@ -40,5 +40,5 @@ deploy:
     all_branches: true
     branches:
       only:
-      - test
+      - travis_releasy_feature
     body: "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
