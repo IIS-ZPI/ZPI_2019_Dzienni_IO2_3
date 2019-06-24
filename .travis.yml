@@ -18,7 +18,7 @@ stages:
 - compile
 - test
 - name: deploy
-  if: branch = test
+  if: branch = releases
 
 before_deploy:
 - git config --local user.name "bigoz005"
@@ -31,4 +31,4 @@ deploy:
   file: /home/travis/build/IIS-ZPI/ZPI_2019_Dzienni_IO2_3/target/ZPI_2019_Dzienni_IO2_3-1.0-SNAPSHOT.jar
   skip_cleanup: true
   on:
-    branch: test
+    branch: release
