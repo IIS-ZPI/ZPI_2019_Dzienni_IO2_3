@@ -87,3 +87,4 @@ public class NbpCommunication {
         return nbpSeriesC;
     }
 }
+//tetstowy komentarz
