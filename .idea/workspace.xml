@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e587bb63-b82d-411d-9bb3-05228d453e85" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/data/NbpSeriesA.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/data/NbpSeriesB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/data/NbpTableA.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/data/NbpTableB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/data/NbpTableC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zpi/data/Rates.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/zpi/AppTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -70,14 +79,16 @@
     <session id="-1443374871">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="2" />
+          <entry key="class" value="2" />
+          <entry key="java" value="3" />
           <entry key="xml" value="1" />
           <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="2" />
+          <entry key="CLASS" value="2" />
+          <entry key="JAVA" value="3" />
           <entry key="XML" value="1" />
           <entry key="YAML" value="1" />
         </counts>
@@ -87,7 +98,7 @@
           <entry key="java" value="21" />
           <entry key="txt" value="16" />
           <entry key="xml" value="7" />
-          <entry key="yml" value="116" />
+          <entry key="yml" value="117" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -95,18 +106,18 @@
           <entry key="JAVA" value="21" />
           <entry key="PLAIN_TEXT" value="16" />
           <entry key="XML" value="7" />
-          <entry key="YAML" value="116" />
+          <entry key="YAML" value="117" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="89" column="20" lean-forward="true" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+            <state relative-caret-position="443">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -114,17 +125,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            <state relative-caret-position="357">
+              <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+            <state>
+              <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zpi/data/series/NbpSeriesB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -173,9 +193,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zpi/data/NbpTableA.java" />
         <option value="$PROJECT_DIR$/mvnw" />
         <option value="$PROJECT_DIR$/mvnw.cmd" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java" />
       </list>
     </option>
   </component>
@@ -269,62 +289,6 @@
               <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="table" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zpi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zpi" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="test-classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="test-classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZPI_2019_Dzienni_IO2_3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZPI_2019_Dzienni_IO2_3" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="test-classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zpi" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -336,7 +300,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561408217221" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561408702000" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../zppp" />
@@ -367,10 +331,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AppTest">
+  <component name="RunManager" selected="Application.NbpCommunication">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.zpi.App" />
       <module name="zpiProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zpi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NbpCommunication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zpi.NbpCommunication" />
+      <module name="ZPI_2019_Dzienni_IO2_3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.zpi.*" />
@@ -398,9 +375,11 @@
     <list>
       <item itemvalue="Application.App" />
       <item itemvalue="JUnit.AppTest" />
+      <item itemvalue="Application.NbpCommunication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NbpCommunication" />
         <item itemvalue="JUnit.AppTest" />
         <item itemvalue="Application.App" />
       </list>
@@ -482,7 +461,7 @@
     <frame x="-1832" y="-8" width="1840" height="1042" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14550562" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14550562" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -492,14 +471,14 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32923076" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994382" visible="true" weight="0.32819384" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4994382" visible="true" weight="0.32929516" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4994382" weight="0.32929516" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005618" side_tool="true" visible="true" weight="0.32929516" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005618" side_tool="true" visible="true" weight="0.32819384" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
@@ -565,24 +544,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="89" column="20" lean-forward="true" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+        <state>
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        <state relative-caret-position="357">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/target/classes/com/zpi/data/NbpSeriesA.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+        <state relative-caret-position="136">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#1279#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/com/zpi/NbpCommunication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <folding>
+            <element signature="e#0#3765#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zpi/data/series/NbpSeriesB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zpi/NbpCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
