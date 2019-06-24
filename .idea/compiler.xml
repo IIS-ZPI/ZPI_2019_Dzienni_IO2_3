@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ZPI_2019_Dzienni_IO2_3" />
+        <module name="ZPI_2019_Dzienni_IO2_3_55" />
         <module name="zpiProject" />
       </profile>
     </annotationProcessing>
