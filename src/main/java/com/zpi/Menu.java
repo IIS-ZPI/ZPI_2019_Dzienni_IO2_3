@@ -15,10 +15,23 @@ import static com.zpi.NbpCommunication.getNbpSeriesCForGivenCurrencyFromGivenPer
 
 public class Menu {
     Scanner input = new Scanner(System.in);
-    String chosenCurrency, chosenPeriod, chosenTable;
+    String chosenCurrency, secondChosenCurrency, chosenPeriod, chosenTable, chosenAnalyze;
+    Set<String> currency = new HashSet<>();
 
     public Menu() {
         while (true) {
+            System.out.println("Podaj typ anlizy, który chcesz wykonać:");
+            System.out.println("1. Ilość sesji wzrostowych/spadkowych/bez zmian.\n"
+                    + "2. Miary statystyczne\n"
+                    + "3. Rozkład zmian walutowych\n");
+            chosenAnalyze = input.nextLine();
+            if (!isCorrectAnalyzeInput(chosenAnalyze)) {
+                if (repeatAttempt()) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
 
             System.out.println("Podaj dla jakiej tabeli przeprowadzic analize:");
             System.out.println("Możliwe: A, B, C.");
@@ -31,14 +44,31 @@ public class Menu {
                 }
             }
 
+            loadPossibleCurrency();
+
             System.out.println("Podaj kod waluty z tabeli kursow walut dla ktorej przeprowadzic analize: ");
-            System.out.println("Przykład: USD, EUR, AUD.");
+            System.out.println("Możliwe:");
+            System.out.println(currency);
             chosenCurrency = input.nextLine();
             if (!isCorrectCurrencyInput(chosenCurrency)) {
                 if (repeatAttempt()) {
                     continue;
                 } else {
                     break;
+                }
+            }
+
+            if(chosenAnalyze.equals("3")) {
+                System.out.println("Podaj kod drugiej waluty z tabeli kursow walut dla ktorej przeprowadzic analize: ");
+                System.out.println("Możliwe:");
+                System.out.println(currency);
+                secondChosenCurrency = input.nextLine();
+                if (!isCorrectCurrencyInput(secondChosenCurrency) && !secondChosenCurrency.equals(chosenCurrency)) {
+                    if (repeatAttempt()) {
+                        continue;
+                    } else {
+                        break;
+                    }
                 }
             }
 
@@ -63,40 +93,63 @@ public class Menu {
             String amountOfRecords = Methods.changeChosenPeriodIntoDays(chosenPeriod);
 
             if (chosenTable.equals("A")) {
-                System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                        " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                if(chosenAnalyze.equals("1")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
+                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesA.analyzeStatisticalMeasures(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    NbpSeriesA.analyzeSessions(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                } else if(chosenAnalyze.equals("2")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
+                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                //test funkcji analyzeSessions, trzeba zrobić do tego opcje w menu
-                NbpSeriesA.analyzeSessions(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                //test funkcji compareTwoCurrencies, trzeba zrobić do tego opcje w menu
-                NbpSeriesA.compareTwoCurrencies(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
-                        getNbpSeriesAForGivenCurrencyFromGivenPeriod("EUR", amountOfRecords), "EUR");
-
+                    NbpSeriesA.analyzeStatisticalMeasures(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                } else if(chosenAnalyze.equals("3")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
+                            " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                    NbpSeriesA.compareTwoCurrencies(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                            getNbpSeriesAForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
+                }
                 System.out.println("\n");
             }
 
             if (chosenTable.equals("B")) {
-                System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                        " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                if(chosenAnalyze.equals("1")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
+                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesB.analyzeStatisticalMeasures(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    NbpSeriesB.analyzeSessions(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                } else if(chosenAnalyze.equals("2")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
+                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+
+                    NbpSeriesB.analyzeStatisticalMeasures(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                } else if(chosenAnalyze.equals("3")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
+                            " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                    NbpSeriesB.compareTwoCurrencies(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                            getNbpSeriesBForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
+                }
                 System.out.println("\n");
             }
 
             if (chosenTable.equals("C")) {
-                System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
-                        " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                if(chosenAnalyze.equals("1")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
+                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesC.analyzeStatisticalMeasures(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    NbpSeriesC.analyzeSessions(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                } else if(chosenAnalyze.equals("2")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
+                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
 
-                NbpSeriesC.compareTwoCurrencies(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
-                        getNbpSeriesCForGivenCurrencyFromGivenPeriod("EUR", amountOfRecords), "EUR");
-
+                    NbpSeriesC.analyzeStatisticalMeasures(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                } else if(chosenAnalyze.equals("3")) {
+                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
+                            " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                    NbpSeriesC.compareTwoCurrencies(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                            getNbpSeriesCForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
+                }
                 System.out.println("\n");
-
-
             }
             if (exit()) {
                 continue;
@@ -137,8 +190,18 @@ public class Menu {
 
 
     private Boolean isCorrectCurrencyInput(String input) {
-        Set<String> currency = new HashSet<>();
+        if(currency == null) {
+            return false;
+        }
 
+        if (currency.contains(input)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void loadPossibleCurrency() {
         if(chosenTable.equals("A")) {
             List<NbpTableA> nbpTableList;
             nbpTableList = NbpCommunication.getNbpTableA();
@@ -163,15 +226,7 @@ public class Menu {
                     currency.add(nbpTableList.get(i).getRates().get(j).getCode());
                 }
             }
-        } else {
-            return false;
         }
-
-        if (currency.contains(input)) {
-            return true;
-        }
-
-        return false;
     }
 
     private Boolean isCorrectPeriodInput(String input) {
@@ -183,6 +238,13 @@ public class Menu {
 
     private Boolean isCorrectTableLetterInput(String input) {
         if (input.matches("[ABC]")) {
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean isCorrectAnalyzeInput(String input) {
+        if(input.matches("[123]")) {
             return true;
         }
         return false;
