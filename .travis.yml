@@ -2,10 +2,6 @@ language: java
 install: true
 jdk:
 - openjdk10
-branches:
-  only:
-  - test
-  - release
 notifications:
   email:
     recipients:
