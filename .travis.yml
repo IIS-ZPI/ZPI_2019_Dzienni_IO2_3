@@ -1,5 +1,6 @@
 language: java
 install: true
+sudo: true
 
 notifications:
   email:
@@ -12,10 +13,11 @@ cache:
   directories:
   - .autoconf
   - $HOME/.m2
-sudo: true
+
 
 script:
-- mvn install
+- mvn clean install -U
+- mvn validate
 stages:
 - compile
 - test
