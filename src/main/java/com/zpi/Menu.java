@@ -188,7 +188,7 @@ public class Menu {
             for(int i = 0; i < listToSave.size(); i++) {
                 out.println(listToSave.get(i));
             }
-            out.println("------------------------------------------------");
+            out.println("--------------------------------------------------");
         } catch (IOException e) {
             System.out.println("Blad zapisu");
         }
