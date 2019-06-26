@@ -1,7 +1,6 @@
 language: java
 install: true
-jdk:
-- openjdk8
+
 notifications:
   email:
     recipients:
@@ -14,7 +13,7 @@ stages:
 - compile
 - test
 - name: deploy
-  if: branch = releases
+  if: branch = release
 
 before_deploy:
 - git config --local user.name "bigoz005"
