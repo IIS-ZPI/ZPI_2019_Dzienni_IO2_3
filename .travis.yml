@@ -22,7 +22,7 @@ stages:
 - compile
 - test
 - name: deploy
-  if: branch = release
+  if: branch = true_release
 
 before_deploy:
 - git config --local user.name "bigoz005"
