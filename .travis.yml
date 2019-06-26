@@ -9,7 +9,8 @@ notifications:
     on_success: always
     on_failure: always
 script:
-- mvn install
+- mvn clean install -U
+- mvn validate
 stages:
 - compile
 - test
