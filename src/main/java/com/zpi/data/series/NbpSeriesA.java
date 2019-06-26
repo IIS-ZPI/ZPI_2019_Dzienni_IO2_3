@@ -27,16 +27,16 @@ public class NbpSeriesA {
         return rates;
     }
 
-    public static void analyzeStatisticalMeasures(NbpSeriesA nbpSeriesA) {
+    public static List<String> analyzeStatisticalMeasures(NbpSeriesA nbpSeriesA) {
         double[] valuesCurrency = getValuesCurrency(nbpSeriesA);
 
-        Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrency);
+        return Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrency);
     }
 
-    public static void analyzeSessions(NbpSeriesA nbpSeriesA) {
+    public static List<String> analyzeSessions(NbpSeriesA nbpSeriesA) {
         double[] valuesCurrency = getValuesCurrency(nbpSeriesA);
 
-        Methods.showResultsOfSessionAnalysis(valuesCurrency);
+        return Methods.showResultsOfSessionAnalysis(valuesCurrency);
     }
 
     public static void compareTwoCurrencies(NbpSeriesA nbpSeriesA1, String currency1, NbpSeriesA nbpSeriesA2, String currency2) {

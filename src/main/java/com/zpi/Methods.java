@@ -3,6 +3,8 @@ package com.zpi;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Methods {
 
@@ -120,17 +122,39 @@ public class Methods {
 
     }
 
-    public static void showResultsOfSessionAnalysis(double[] values) {
-        System.out.println("Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(values));
-        System.out.println("Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(values));
-        System.out.println("Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(values));
+    public static List<String> showResultsOfSessionAnalysis(double[] values) {
+        String result1 = "Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(values);
+        String result2 = "Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(values);
+        String result3 = "Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(values);
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
+
+        List<String> results = new ArrayList<>();
+        results.add(result1);
+        results.add(result2);
+        results.add(result3);
+
+        return results;
     }
 
-    public static void showResultsOfStatisticalMeasuresAnalysis(double[] values) {
-        System.out.println("Mediana wynosi: " + Methods.findMedian(values));
-        System.out.println("Dominanta wynosi: " + Methods.findMode(values));
-        System.out.println("Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(values));
-        System.out.println("Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(values));
+    public static List<String> showResultsOfStatisticalMeasuresAnalysis(double[] values) {
+        String result1 = "Mediana wynosi: " + Methods.findMedian(values);
+        String result2 = "Dominanta wynosi: " + Methods.findMode(values);
+        String result3 = "Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(values);
+        String result4 = "Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(values);
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
+        System.out.println(result4);
+
+        List<String> results = new ArrayList<>();
+        results.add(result1);
+        results.add(result2);
+        results.add(result3);
+        results.add(result4);
+
+        return results;
     }
 
     public static void showCurrencyAndDifference(String currency, double diff) {
