@@ -10,8 +10,8 @@ notifications:
     on_failure: always
 
 cache:
-  directories:
   - .autoconf
+  directories:
   - $HOME/.m2
 
 
