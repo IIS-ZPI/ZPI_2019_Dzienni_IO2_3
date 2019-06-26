@@ -7,6 +7,13 @@ notifications:
     - michal.nawrot.mn.mn@gmail.com
     on_success: always
     on_failure: always
+
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
+sudo: true
+
 script:
 - mvn install
 stages:
