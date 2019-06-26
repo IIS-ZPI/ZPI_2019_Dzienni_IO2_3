@@ -1,7 +1,6 @@
 language: java
 install: true
-jdk:
-- openjdk8
+
 notifications:
   email:
     recipients:
