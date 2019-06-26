@@ -3,6 +3,7 @@ package com.zpi.data.series;
 import com.zpi.Methods;
 import com.zpi.data.rates.RatesForSeriesC;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NbpSeriesC {
@@ -20,26 +21,36 @@ public class NbpSeriesC {
         return rates;
     }
 
-    public static void analyzeStatisticalMeasures(NbpSeriesC nbpSeriesC) {
+    public static List<String> analyzeStatisticalMeasures(NbpSeriesC nbpSeriesC) {
         double[] valuesCurrencyForBid = getValuesCurrencyForBid(nbpSeriesC);
         double[] valuesCurrencyForAsk = getValuesCurrencyForAsk(nbpSeriesC);
 
         System.out.println("\nCena sprzedaży");
-        Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForBid);
+        List<String> listOne = Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForBid);
 
         System.out.println("\nCena kupna");
-        Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForAsk);
+        List<String> listTwo = Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForAsk);
+
+        List<String> newList = new ArrayList<String>(listOne);
+        newList.addAll(listTwo);
+
+        return newList;
     }
 
-    public static void analyzeSessions(NbpSeriesC nbpSeriesC) {
+    public static List<String> analyzeSessions(NbpSeriesC nbpSeriesC) {
         double[] valuesCurrencyForBid = getValuesCurrencyForBid(nbpSeriesC);
         double[] valuesCurrencyForAsk = getValuesCurrencyForAsk(nbpSeriesC);
 
         System.out.println("\nDla ceny kupna");
-        Methods.showResultsOfSessionAnalysis(valuesCurrencyForBid);
+        List<String> listOne = Methods.showResultsOfSessionAnalysis(valuesCurrencyForBid);
 
         System.out.println("\nDla ceny sprzedaży");
-        Methods.showResultsOfSessionAnalysis(valuesCurrencyForAsk);
+        List<String> listTwo =Methods.showResultsOfSessionAnalysis(valuesCurrencyForAsk);
+
+        List<String> newList = new ArrayList<String>(listOne);
+        newList.addAll(listTwo);
+
+        return newList;
     }
 
     public static void compareTwoCurrencies(NbpSeriesC nbpSeriesC1, String currency1, NbpSeriesC nbpSeriesC2, String currency2) {
