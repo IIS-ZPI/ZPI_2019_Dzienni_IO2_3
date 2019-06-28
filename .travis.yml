@@ -1,5 +1,6 @@
 language: java
 install: true
+sudo: true
 
 notifications:
   email:
@@ -12,15 +13,16 @@ cache:
   directories:
   - .autoconf
   - $HOME/.m2
-sudo: true
+
 
 script:
-- mvn install
+- mvn clean install -U
+- mvn validate
 stages:
 - compile
 - test
 - name: deploy
-  if: branch = release
+  if: branch = true_release
 
 before_deploy:
 - git config --local user.name "bigoz005"
@@ -33,4 +35,4 @@ deploy:
   file: /home/travis/build/IIS-ZPI/ZPI_2019_Dzienni_IO2_3/target/ZPI_2019_Dzienni_IO2_3-1.0-SNAPSHOT.jar
   skip_cleanup: true
   on:
-    branch: release
+    branch: true_release

@@ -114,8 +114,8 @@ public class Methods {
             double diff2 = values2[i] - values2[i-1];
 
             System.out.println(i + " porównanie");
-            showCurrencyAndDifference(currency1, diff1);
-            showCurrencyAndDifference(currency2, diff2);
+            showCurrencyAndDifference(currency1, roundValue(diff1));
+            showCurrencyAndDifference(currency2, roundValue(diff2));
 
             System.out.println();
         }
