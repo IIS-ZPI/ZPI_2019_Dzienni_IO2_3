@@ -25,10 +25,10 @@ public class NbpSeriesC {
         double[] valuesCurrencyForBid = getValuesCurrencyForBid(nbpSeriesC);
         double[] valuesCurrencyForAsk = getValuesCurrencyForAsk(nbpSeriesC);
 
-        System.out.println("\nCena sprzedaży");
+        System.out.println("\nCena kupna");
         List<String> listOne = Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForBid);
 
-        System.out.println("\nCena kupna");
+        System.out.println("\nCena sprzedazy");
         List<String> listTwo = Methods.showResultsOfStatisticalMeasuresAnalysis(valuesCurrencyForAsk);
 
         List<String> newList = new ArrayList<String>(listOne);
@@ -44,7 +44,7 @@ public class NbpSeriesC {
         System.out.println("\nDla ceny kupna");
         List<String> listOne = Methods.showResultsOfSessionAnalysis(valuesCurrencyForBid);
 
-        System.out.println("\nDla ceny sprzedaży");
+        System.out.println("\nDla ceny sprzedazy");
         List<String> listTwo =Methods.showResultsOfSessionAnalysis(valuesCurrencyForAsk);
 
         List<String> newList = new ArrayList<String>(listOne);
@@ -63,7 +63,7 @@ public class NbpSeriesC {
         System.out.println("\nDla ceny kupna");
         Methods.showDifferencesBetweenTwoCurrencies(valuesCurrencyForBid1, currency1, valuesCurrencyForBid2, currency2);
 
-        System.out.println("\nDla ceny sprzedaży");
+        System.out.println("\nDla ceny sprzedazy");
         Methods.showDifferencesBetweenTwoCurrencies(valuesCurrencyForAsk1, currency1, valuesCurrencyForAsk2, currency2);
 
     }
