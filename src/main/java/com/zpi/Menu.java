@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.UnknownHostException;
 import java.util.*;
 
 import com.zpi.data.series.NbpSeriesA;
@@ -22,13 +23,14 @@ public class Menu {
     String chosenCurrency, secondChosenCurrency, chosenPeriod, chosenTable, chosenAnalyze;
     Set<String> currency = new HashSet<>();
     List<String> listToSave = new ArrayList<>();
+    boolean isConnectionCorrect = true;
 
     public Menu() {
         while (true) {
-            System.out.println("Podaj typ anlizy, który chcesz wykonać:");
-            System.out.println("1. Ilość sesji wzrostowych/spadkowych/bez zmian.\n"
+            System.out.println("Podaj typ anlizy, ktory chcesz wykonac:");
+            System.out.println("1. Ilosc sesji wzrostowych/spadkowych/bez zmian.\n"
                     + "2. Miary statystyczne\n"
-                    + "3. Rozkład zmian walutowych\n");
+                    + "3. Rozklad zmian walutowych\n");
             chosenAnalyze = input.nextLine();
             if (!isCorrectAnalyzeInput(chosenAnalyze)) {
                 if (repeatAttempt()) {
@@ -38,8 +40,10 @@ public class Menu {
                 }
             }
 
+
+
             System.out.println("Podaj dla jakiej tabeli przeprowadzic analize:");
-            System.out.println("Możliwe: A, B, C.");
+            System.out.println("Mozliwe: A, B, C.");
             chosenTable = input.nextLine();
             if (!isCorrectTableLetterInput(chosenTable)) {
                 if (repeatAttempt()) {
@@ -51,8 +55,9 @@ public class Menu {
 
             loadPossibleCurrency();
 
+
             System.out.println("Podaj kod waluty z tabeli kursow walut dla ktorej przeprowadzic analize: ");
-            System.out.println("Możliwe:");
+            System.out.println("Mozliwe:");
             System.out.println(currency);
             chosenCurrency = input.nextLine();
             if (!isCorrectCurrencyInput(chosenCurrency)) {
@@ -65,7 +70,7 @@ public class Menu {
 
             if(chosenAnalyze.equals("3")) {
                 System.out.println("Podaj kod drugiej waluty z tabeli kursow walut dla ktorej przeprowadzic analize: ");
-                System.out.println("Możliwe:");
+                System.out.println("Mozliwe:");
                 System.out.println(currency);
                 secondChosenCurrency = input.nextLine();
                 if (!isCorrectCurrencyInput(secondChosenCurrency) && !secondChosenCurrency.equals(chosenCurrency)) {
@@ -77,14 +82,14 @@ public class Menu {
                 }
             }
 
-            System.out.println("Podaj okres dla którego ma byc przeprowadzona analiza: ");
+            System.out.println("Podaj okres dla ktorego ma byc przeprowadzona analiza: ");
             System.out.println("1. 1 tydzien(7 dni)\n"
                     + "2. 2 tygodnie(14 dni)\n"
                     + "3. 1 miesiac(30 dni)\n"
                     + "4. 1 kwartal(90 dni)\n"
                     + "5. pol roku(182 dni)\n"
                     + "6. rok(365 dni)");
-            System.out.println("Wybierz jedną z możliwości. (1-6)");
+            System.out.println("Wybierz jedna z mozliwosci. (1-6)");
             chosenPeriod = input.nextLine();
 
             if (!isCorrectPeriodInput(chosenPeriod)) {
@@ -97,64 +102,82 @@ public class Menu {
 
             String amountOfRecords = Methods.changeChosenPeriodIntoDays(chosenPeriod);
 
-            if (chosenTable.equals("A")) {
-                if(chosenAnalyze.equals("1")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+           try {
+                if (chosenTable.equals("A")) {
+                    if(chosenAnalyze.equals("1")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu A" +
+                                " dla waluty " + chosenCurrency + " w okreslonym okresie. Ilosc rekordow: " + amountOfRecords);
 
-                    listToSave = NbpSeriesA.analyzeSessions(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                } else if(chosenAnalyze.equals("2")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
+                        listToSave = NbpSeriesA.analyzeSessions(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    } else if(chosenAnalyze.equals("2")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu A" +
+                                " dla waluty " + chosenCurrency + " w okreslonym okresie. Ilosc rekordow: " + amountOfRecords);
 
-                    listToSave = NbpSeriesA.analyzeStatisticalMeasures(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                } else if(chosenAnalyze.equals("3")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu A" +
-                            " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-                    NbpSeriesA.compareTwoCurrencies(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
-                            getNbpSeriesAForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
+                        listToSave = NbpSeriesA.analyzeStatisticalMeasures(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    } else if(chosenAnalyze.equals("3")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu A" +
+                                " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w okreslonym okresie. Ilosc rekordow: " + amountOfRecords);
+                        NbpSeriesA.compareTwoCurrencies(getNbpSeriesAForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                                getNbpSeriesAForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
+                    }
+                    System.out.println("\n");
                 }
-                System.out.println("\n");
+
+                if (chosenTable.equals("B")) {
+                    if(chosenAnalyze.equals("1")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu B" +
+                                " dla waluty " + chosenCurrency + " w okreslonym okresie. Ilosc rekordow: " + amountOfRecords);
+
+                        listToSave = NbpSeriesB.analyzeSessions(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    } else if(chosenAnalyze.equals("2")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu B" +
+                                " dla waluty " + chosenCurrency + " w okreslonym okresie. Ilosc rekordow: " + amountOfRecords);
+
+                        listToSave = NbpSeriesB.analyzeStatisticalMeasures(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    } else if(chosenAnalyze.equals("3")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu B" +
+                                " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w okreslonym okresie. Ilosc rekordow: " + amountOfRecords);
+                        NbpSeriesB.compareTwoCurrencies(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
+                                getNbpSeriesBForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
+                    }
+                    System.out.println("\n");
+                }
+
+                if (chosenTable.equals("C")) {
+                    if (chosenAnalyze.equals("1")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu C"
+                                           + " dla waluty "
+                                           + chosenCurrency
+                                           + " w okreslonym okresie. Ilosc rekordow: "
+                                           + amountOfRecords);
+
+                        listToSave = NbpSeriesC.analyzeSessions(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    } else if (chosenAnalyze.equals("2")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu C"
+                                           + " dla waluty "
+                                           + chosenCurrency
+                                           + " w okreslonym okresie. Ilosc rekordow: "
+                                           + amountOfRecords);
+
+                        listToSave = NbpSeriesC.analyzeStatisticalMeasures(
+                                getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
+                    } else if (chosenAnalyze.equals("3")) {
+                        System.out.println("Analiza bedzie przeprowadzona dla tabeli kursow walut typu C"
+                                           + " dla walut "
+                                           + chosenCurrency
+                                           + " i "
+                                           + secondChosenCurrency
+                                           + " w okreslonym okresie. Ilosc rekordow: "
+                                           + amountOfRecords);
+                        NbpSeriesC.compareTwoCurrencies(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords),
+                                chosenCurrency, getNbpSeriesCForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords),
+                                secondChosenCurrency);
+                    }
+                    System.out.println("\n");
+                }
             }
-
-            if (chosenTable.equals("B")) {
-                if(chosenAnalyze.equals("1")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-
-                    listToSave = NbpSeriesB.analyzeSessions(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                } else if(chosenAnalyze.equals("2")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-
-                    listToSave = NbpSeriesB.analyzeStatisticalMeasures(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                } else if(chosenAnalyze.equals("3")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu B" +
-                            " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-                    NbpSeriesB.compareTwoCurrencies(getNbpSeriesBForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
-                            getNbpSeriesBForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
-                }
-                System.out.println("\n");
-            }
-
-            if (chosenTable.equals("C")) {
-                if(chosenAnalyze.equals("1")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
-                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-
-                    listToSave = NbpSeriesC.analyzeSessions(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                } else if(chosenAnalyze.equals("2")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
-                            " dla waluty " + chosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-
-                    listToSave = NbpSeriesC.analyzeStatisticalMeasures(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords));
-                } else if(chosenAnalyze.equals("3")) {
-                    System.out.println("Analiza będzie przeprowadzona dla tabeli kursów walut typu C" +
-                            " dla walut " + chosenCurrency + " i " + secondChosenCurrency + " w określonym okresie. Ilość rekordów: " + amountOfRecords);
-                    NbpSeriesC.compareTwoCurrencies(getNbpSeriesCForGivenCurrencyFromGivenPeriod(chosenCurrency, amountOfRecords), chosenCurrency,
-                            getNbpSeriesCForGivenCurrencyFromGivenPeriod(secondChosenCurrency, amountOfRecords), secondChosenCurrency);
-                }
-                System.out.println("\n");
+            catch (Exception ex) {
+                System.out.println("Blad polaczenia");
             }
             if (exit()) {
                 continue;
@@ -166,7 +189,7 @@ public class Menu {
 
     private Boolean repeatAttempt() {
         while (true) {
-            System.out.println("Podano niepoprawną wartość. Powtórzyć? T/N");
+            System.out.println("Podano niepoprawna wartosc. Powtorzyc? T/N");
             String result = input.nextLine();
             if (result.equals("T")) {
                 return true;
@@ -197,7 +220,7 @@ public class Menu {
     private boolean exit() {
 
         if(!chosenAnalyze.equals("3")) {
-            System.out.println("Czy chcesz zapisać wyniki ostatniej analizy? T/N");
+            System.out.println("Czy chcesz zapisac wyniki ostatniej analizy? T/N");
             String answer = input.nextLine();
 
             if (answer.equals("T")) {
@@ -206,7 +229,7 @@ public class Menu {
         }
 
         while (true) {
-            System.out.println("Czy chcesz ponownie wykonać operację? T/N");
+            System.out.println("Czy chcesz ponownie wykonac operacje? T/N");
             String result = input.nextLine();
 
             if (result.equals("T")) {
@@ -233,31 +256,37 @@ public class Menu {
     }
 
     private void loadPossibleCurrency() {
-        if(chosenTable.equals("A")) {
-            List<NbpTableA> nbpTableList;
-            nbpTableList = NbpCommunication.getNbpTableA();
-            for (int i = 0; i < nbpTableList.size(); i++) {
-                for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
-                    currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+
+            try {
+            if (chosenTable.equals("A")) {
+                List<NbpTableA> nbpTableList;
+                nbpTableList = NbpCommunication.getNbpTableA();
+                for (int i = 0; i < nbpTableList.size(); i++) {
+                    for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
+                        currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+                    }
+                }
+            } else if (chosenTable.equals("B")) {
+                List<NbpTableB> nbpTableList;
+                nbpTableList = NbpCommunication.getNbpTableB();
+                for (int i = 0; i < nbpTableList.size(); i++) {
+                    for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
+                        currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+                    }
+                }
+            } else if (chosenTable.equals("C")) {
+                List<NbpTableC> nbpTableList;
+                nbpTableList = NbpCommunication.getNbpTableC();
+                for (int i = 0; i < nbpTableList.size(); i++) {
+                    for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
+                        currency.add(nbpTableList.get(i).getRates().get(j).getCode());
+                    }
                 }
             }
-        } else if(chosenTable.equals("B")) {
-            List<NbpTableB> nbpTableList;
-            nbpTableList = NbpCommunication.getNbpTableB();
-            for (int i = 0; i < nbpTableList.size(); i++) {
-                for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
-                    currency.add(nbpTableList.get(i).getRates().get(j).getCode());
-                }
+            } catch (Exception ex) {
+                System.out.println("Blad poalczenia");
             }
-        } else if(chosenTable.equals("C")) {
-            List<NbpTableC> nbpTableList;
-            nbpTableList = NbpCommunication.getNbpTableC();
-            for (int i = 0; i < nbpTableList.size(); i++) {
-                for (int j = 0; j < nbpTableList.get(i).getRates().size(); j++) {
-                    currency.add(nbpTableList.get(i).getRates().get(j).getCode());
-                }
-            }
-        }
+
     }
 
     private Boolean isCorrectPeriodInput(String input) {

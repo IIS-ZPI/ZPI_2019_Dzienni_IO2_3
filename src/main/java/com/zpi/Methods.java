@@ -107,13 +107,13 @@ public class Methods {
 
     public static void showDifferencesBetweenTwoCurrencies(double[] values1, String currency1, double[] values2, String currency2) {
 
-        System.out.println("\nAnaliza pokazująca porównanie dwóch walut, ich wzrostów czy spadków względem dnia poprzedniego");
+        System.out.println("\nAnaliza pokazujaca porownanie dwoch walut, ich wzrostow czy spadkow wzgledem dnia poprzedniego");
 
         for(int i = 1; i < values1.length; i++) {
             double diff1 = values1[i] - values1[i-1];
             double diff2 = values2[i] - values2[i-1];
 
-            System.out.println(i + " porównanie");
+            System.out.println(i + " porownanie");
             showCurrencyAndDifference(currency1, roundValue(diff1));
             showCurrencyAndDifference(currency2, roundValue(diff2));
 
@@ -123,9 +123,9 @@ public class Methods {
     }
 
     public static List<String> showResultsOfSessionAnalysis(double[] values) {
-        String result1 = "Ilość sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(values);
-        String result2 = "Ilość sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(values);
-        String result3 = "Ilość sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(values);
+        String result1 = "Ilosc sesji wzrostowych wynosi: " + Methods.findAmountOfGrowthSessions(values);
+        String result2 = "Ilosc sesji spadkowych wynosi: " + Methods.findAmountOfDownwardSessions(values);
+        String result3 = "Ilosc sesji bez zmian wynosi: " + Methods.findAmountOfUnchangedSessions(values);
         System.out.println(result1);
         System.out.println(result2);
         System.out.println(result3);
@@ -142,7 +142,7 @@ public class Methods {
         String result1 = "Mediana wynosi: " + Methods.findMedian(values);
         String result2 = "Dominanta wynosi: " + Methods.findMode(values);
         String result3 = "Odchylenie standardowe wynosi: " + Methods.findStandardDeviation(values);
-        String result4 = "Współczynnik zmienności wynosi: " + Methods.findCoefficientOfVariation(values);
+        String result4 = "Wspolczynnik zmiennosci wynosi: " + Methods.findCoefficientOfVariation(values);
         System.out.println(result1);
         System.out.println(result2);
         System.out.println(result3);
